@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvettigEncryption", "SvettigEncryption\SvettigEncryption.csproj", "{6622F853-91D9-406A-861E-A06F0DFC903C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvettigPlugin", "SvettigPlugin\SvettigPlugin.csproj", "{15F9BA18-E4A2-45EE-B2CB-BAA36F00C658}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6622F853-91D9-406A-861E-A06F0DFC903C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6622F853-91D9-406A-861E-A06F0DFC903C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6622F853-91D9-406A-861E-A06F0DFC903C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6622F853-91D9-406A-861E-A06F0DFC903C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F9BA18-E4A2-45EE-B2CB-BAA36F00C658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F9BA18-E4A2-45EE-B2CB-BAA36F00C658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F9BA18-E4A2-45EE-B2CB-BAA36F00C658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F9BA18-E4A2-45EE-B2CB-BAA36F00C658}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

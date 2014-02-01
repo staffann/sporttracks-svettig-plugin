@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7e7745d1-d055-4606-8831-8db3534017ed" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SvettigWorkoutService.xsd" MetadataType="Schema" ID="d3a3d716-b6ad-44db-8544-8a73c1b8e7fb" SourceId="1" SourceUrl="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WorkoutService.wsdl" MetadataType="Wsdl" ID="1ba8a968-c1da-44c8-915c-7b7183e12855" SourceId="1" SourceUrl="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?wsdl" />
+    <MetadataFile FileName="SvettigWorkoutService.disco" MetadataType="Disco" ID="634c0a9b-3e03-41a3-a9a0-9a0336669d82" SourceId="1" SourceUrl="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?disco" />
+    <MetadataFile FileName="SvettigWorkoutService1.xsd" MetadataType="Schema" ID="60523db6-4e44-489f-b4eb-8d12348e49df" SourceId="1" SourceUrl="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SvettigWorkoutService2.xsd" MetadataType="Schema" ID="b2e1fe65-9070-4a19-a5d8-ea155a9118ae" SourceId="1" SourceUrl="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SvettigWorkoutService3.xsd" MetadataType="Schema" ID="d6fe70b8-63c3-4747-9d93-23dd1eebe601" SourceId="1" SourceUrl="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
