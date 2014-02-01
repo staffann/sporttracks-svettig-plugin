@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SvettigWorkoutService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SvettigWorkoutService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:simpleType name="Application">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SVETTIG_IOS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SVETTIG_ANDROID">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RUNNERUP">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SPORT_TRACKS_PLUGIN">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Application" nillable="true" type="tns:Application" />
+  <xs:complexType name="Registration">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int" />
+      <xs:element minOccurs="0" name="birthdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Registration" nillable="true" type="tns:Registration" />
+  <xs:complexType name="Workout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appVersion" nillable="true" type="xs:string" />
+      <xs:element name="application" type="xs:int" />
+      <xs:element minOccurs="0" name="avgPulse" type="xs:int" />
+      <xs:element minOccurs="0" name="borgValue" type="xs:int" />
+      <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
+      <xs:element name="created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="deviceModel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="distanceInMeters" type="xs:float" />
+      <xs:element name="email" nillable="true" type="xs:string" />
+      <xs:element name="encryptedPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="equipmentId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="friends" nillable="true" type="q1:ArrayOfint" />
+      <xs:element minOccurs="0" name="hiddenComment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="maxPulse" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="operatingSystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="routeId" type="xs:int" />
+      <xs:element minOccurs="0" name="timeInSeconds" type="xs:float" />
+      <xs:element minOccurs="0" name="tracksegments" nillable="true" type="tns:ArrayOfTracksegment" />
+      <xs:element name="workoutCategory" type="xs:int" />
+      <xs:element name="workoutSubcategory" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Workout" nillable="true" type="tns:Workout" />
+  <xs:complexType name="ArrayOfTracksegment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tracksegment" nillable="true" type="tns:Tracksegment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTracksegment" nillable="true" type="tns:ArrayOfTracksegment" />
+  <xs:complexType name="Tracksegment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="distanceInMeters" type="xs:float" />
+      <xs:element minOccurs="0" name="pausedSeconds" type="xs:double" />
+      <xs:element minOccurs="0" name="trackpoints" nillable="true" type="tns:ArrayOfTrackpoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tracksegment" nillable="true" type="tns:Tracksegment" />
+  <xs:complexType name="ArrayOfTrackpoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Trackpoint" nillable="true" type="tns:Trackpoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrackpoint" nillable="true" type="tns:ArrayOfTrackpoint" />
+  <xs:complexType name="Trackpoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="altitude" type="xs:float" />
+      <xs:element minOccurs="0" name="created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="heartrate" type="xs:int" />
+      <xs:element minOccurs="0" name="latitude" type="xs:float" />
+      <xs:element minOccurs="0" name="longitude" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Trackpoint" nillable="true" type="tns:Trackpoint" />
+</xs:schema>

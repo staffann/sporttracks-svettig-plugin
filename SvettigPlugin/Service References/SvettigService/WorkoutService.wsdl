@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WorkoutService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SvettigWorkoutService" />
+      <xsd:import schemaLocation="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWorkoutService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessage" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetRoutes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoutes" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetRoutes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetWorkoutCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkoutCategories" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetWorkoutCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkoutCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetEquipment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipment" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetEquipment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEquipmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriends" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_GetFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_SyncUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncUser" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_SyncUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_SyncWorkout_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncWorkout" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_SyncWorkout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_RegisterManualWorkout_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterManualWorkout" />
+  </wsdl:message>
+  <wsdl:message name="IWorkoutService_RegisterManualWorkout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterManualWorkoutResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWorkoutService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/Login" message="tns:IWorkoutService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/LoginResponse" message="tns:IWorkoutService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/GetMessage" message="tns:IWorkoutService_GetMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/GetMessageResponse" message="tns:IWorkoutService_GetMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/GetRoutes" message="tns:IWorkoutService_GetRoutes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/GetRoutesResponse" message="tns:IWorkoutService_GetRoutes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkoutCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/GetWorkoutCategories" message="tns:IWorkoutService_GetWorkoutCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/GetWorkoutCategoriesResponse" message="tns:IWorkoutService_GetWorkoutCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/GetEquipment" message="tns:IWorkoutService_GetEquipment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/GetEquipmentResponse" message="tns:IWorkoutService_GetEquipment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/GetFriends" message="tns:IWorkoutService_GetFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/GetFriendsResponse" message="tns:IWorkoutService_GetFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/SyncUser" message="tns:IWorkoutService_SyncUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/SyncUserResponse" message="tns:IWorkoutService_SyncUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncWorkout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/SyncWorkout" message="tns:IWorkoutService_SyncWorkout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/SyncWorkoutResponse" message="tns:IWorkoutService_SyncWorkout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterManualWorkout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkoutService/RegisterManualWorkout" message="tns:IWorkoutService_RegisterManualWorkout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkoutService/RegisterManualWorkoutResponse" message="tns:IWorkoutService_RegisterManualWorkout_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWorkoutService" type="tns:IWorkoutService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessage">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/GetMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/GetRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkoutCategories">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/GetWorkoutCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquipment">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/GetEquipment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/GetFriends" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncUser">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/SyncUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncWorkout">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/SyncWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterManualWorkout">
+      <soap:operation soapAction="http://tempuri.org/IWorkoutService/RegisterManualWorkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WorkoutService">
+    <wsdl:port name="BasicHttpBinding_IWorkoutService" binding="tns:BasicHttpBinding_IWorkoutService">
+      <soap:address location="http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
