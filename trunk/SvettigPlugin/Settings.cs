@@ -368,16 +368,22 @@ namespace SvettigPlugin
 
         private void StoreToLogbookMetadata(string tag, string jsondata)
         {
+            string newString = tag + " = " + jsondata + "\n";
+
             if (logBook.Metadata.Source.Contains(tag))
             {
                 int startindex = logBook.Metadata.Source.IndexOf(tag);
                 int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-                logBook.Metadata.Source = logBook.Metadata.Source.Replace(logBook.Metadata.Source.Substring(startindex, endindex - startindex + 1),
-                                                                          tag + " = " + jsondata + "\n");
+                if (!newString.Equals(logBook.Metadata.Source.Substring(startindex, endindex - startindex + 1)))
+                {
+                    // If the json string has changed, replace the old with the new!
+                    logBook.Metadata.Source = logBook.Metadata.Source.Replace(logBook.Metadata.Source.Substring(startindex, endindex - startindex + 1),
+                                                                              newString);
+                }
             }
             else
             {
-                logBook.Metadata.Source += tag + " = " + jsondata + "\n";
+                logBook.Metadata.Source += newString;
             }
         }
         
