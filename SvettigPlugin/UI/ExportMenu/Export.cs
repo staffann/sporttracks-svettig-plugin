@@ -23,6 +23,9 @@ using ZoneFiveSoftware.Common.Data.Fitness;
 using SvettigEncryption;
 using SvettigPlugin.SvettigService;
 
+//using Newtonsoft.Json;
+//using System.IO;
+
 namespace SvettigPlugin
 {
     static public class Export
@@ -115,13 +118,18 @@ namespace SvettigPlugin
 
                         workout.tracksegments = dataHandler.GetSvettigLaps(activity);
 
-                        //TODO: equipment, route
 
                         System.ServiceModel.BasicHttpBinding binding = new System.ServiceModel.BasicHttpBinding();
 //                        binding.MaxBufferSize = Int32.MaxValue;
 //                        binding.MaxBufferPoolSize = binding.MaxBufferSize;
 //                        binding.MaxReceivedMessageSize = binding.MaxBufferSize;
 
+                        // Debug code to write the workout contents to file
+                        //string serWorkout = JsonConvert.SerializeObject(workout);
+                        //using (StreamWriter writer = new StreamWriter("workout.txt"))
+                        //{
+                        //    writer.WriteLine(serWorkout);
+                        //}
                         
                         WorkoutServiceClient client = new WorkoutServiceClient(binding,
                             new System.ServiceModel.EndpointAddress("http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc/soap"));
