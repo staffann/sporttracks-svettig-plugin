@@ -321,7 +321,7 @@ namespace SvettigPlugin
                 activityLaps = activityInfo.DistanceLapDetailInfo(Plugin.GetApplication().DisplayOptions.SelectedLapsType.DistanceMeters);
 
             List<Trackpoint> tpList = GetSvettigTrackPoints(activity);
-            if(tpList == null)
+            if (tpList == null)
                 tpList = new List<Trackpoint>();
             int i = 0;
             foreach (LapDetailInfo lapInfo in activityLaps)
@@ -331,10 +331,10 @@ namespace SvettigPlugin
                 newLap.created = ConvertToLocalTime(lapInfo.StartTime).ToString("yyyy-MM-dd HH:mm:ss:fff");
                 newLap.pausedSeconds = lapInfo.EndTime.Subtract(lapInfo.StartTime).Subtract(lapInfo.LapElapsed).TotalSeconds;
                 newLap.pausedSeconds = Math.Round(newLap.pausedSeconds);
-                
+
                 // Add track points to the lap
                 int lapTpStartIdx = i;
-                while (i < tpList.Count && 
+                while (i < tpList.Count &&
                        DateTime.ParseExact(tpList[i].created, "yyyy-MM-dd HH:mm:ss:fff", null).CompareTo(ConvertToLocalTime(lapInfo.EndTime)) <= 0)
                 {
                     i++;
@@ -346,9 +346,9 @@ namespace SvettigPlugin
             }
 
             //// As a test, add all trackpoints to the first lap
-            //if(newLaps.Count > 0)
+            //if (newLaps.Count > 0)
             //{
-            //    newLaps[0].trackpoints = GetSvettigTrackPoints(activity);
+            //    newLaps[0].trackpoints = GetSvettigTrackPoints(activity).ToArray();
             //    //newLaps[0].trackpoints = new Trackpoint[1];
             //    //newLaps[0].trackpoints[0] = GetSvettigTrackPoints(activity)[0];
             //}
@@ -408,8 +408,8 @@ namespace SvettigPlugin
             //double accDistance = 0;
             ITimeValueEntry<IGPSPoint> prevPoint = null;
 
-            // Removing GPS points at identical time is a workaround for the funbeat server not being able to handle them
-            // Ought to be fixed on the server side
+            // Removing GPS points at identical time
+            // Has been seen to be a problem with other sites
             IGPSRoute ActGPSRoute = new GPSRoute(activity.GPSRoute);
             ActGPSRoute.AllowMultipleAtSameTime = false;
 
@@ -630,7 +630,7 @@ namespace SvettigPlugin
         private DateTime ConvertToLocalTime(DateTime utc)
         {
             TimeSpan diff = new TimeSpan(DateTime.Now.Ticks - DateTime.UtcNow.Ticks);
-            return utc.AddHours(diff.Hours);
+            return utc.AddTicks(diff.Ticks);
         }
 
     }
