@@ -98,7 +98,7 @@
             this.actMappingsGroupBox.Controls.Add(this.actMappingsFlowLayoutPanel);
             this.actMappingsGroupBox.Location = new System.Drawing.Point(3, 80);
             this.actMappingsGroupBox.Name = "actMappingsGroupBox";
-            this.actMappingsGroupBox.Size = new System.Drawing.Size(740, 107);
+            this.actMappingsGroupBox.Size = new System.Drawing.Size(760, 107);
             this.actMappingsGroupBox.TabIndex = 5;
             this.actMappingsGroupBox.TabStop = false;
             this.actMappingsGroupBox.Text = "Activity Mappings";
@@ -107,13 +107,13 @@
             // 
             this.actMappingsFlowLayoutPanel.AutoScroll = true;
             this.actMappingsFlowLayoutPanel.AutoSize = true;
-            this.actMappingsFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.actMappingsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actMappingsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.actMappingsFlowLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.actMappingsFlowLayoutPanel.Name = "actMappingsFlowLayoutPanel";
-            this.actMappingsFlowLayoutPanel.Size = new System.Drawing.Size(734, 88);
+            this.actMappingsFlowLayoutPanel.Size = new System.Drawing.Size(754, 88);
             this.actMappingsFlowLayoutPanel.TabIndex = 6;
+            this.actMappingsFlowLayoutPanel.WrapContents = false;
             // 
             // equipmentMappingsGroupBox
             // 
@@ -121,7 +121,7 @@
             this.equipmentMappingsGroupBox.Controls.Add(this.eqMappingsFlowLayoutPanel);
             this.equipmentMappingsGroupBox.Location = new System.Drawing.Point(3, 193);
             this.equipmentMappingsGroupBox.Name = "equipmentMappingsGroupBox";
-            this.equipmentMappingsGroupBox.Size = new System.Drawing.Size(740, 107);
+            this.equipmentMappingsGroupBox.Size = new System.Drawing.Size(760, 107);
             this.equipmentMappingsGroupBox.TabIndex = 8;
             this.equipmentMappingsGroupBox.TabStop = false;
             this.equipmentMappingsGroupBox.Text = "Equipment Mappings (shoes, bikes)";
@@ -135,8 +135,9 @@
             this.eqMappingsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.eqMappingsFlowLayoutPanel.Location = new System.Drawing.Point(3, 16);
             this.eqMappingsFlowLayoutPanel.Name = "eqMappingsFlowLayoutPanel";
-            this.eqMappingsFlowLayoutPanel.Size = new System.Drawing.Size(734, 88);
+            this.eqMappingsFlowLayoutPanel.Size = new System.Drawing.Size(754, 88);
             this.eqMappingsFlowLayoutPanel.TabIndex = 6;
+            this.eqMappingsFlowLayoutPanel.WrapContents = false;
             // 
             // svettigPictureBox
             // 
@@ -160,7 +161,7 @@
             this.Controls.Add(this.actMappingsGroupBox);
             this.Controls.Add(this.gbAccount);
             this.Name = "SettingsControl";
-            this.Size = new System.Drawing.Size(750, 318);
+            this.Size = new System.Drawing.Size(770, 318);
             this.gbAccount.ResumeLayout(false);
             this.gbAccount.PerformLayout();
             this.actMappingsGroupBox.ResumeLayout(false);
