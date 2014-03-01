@@ -60,18 +60,6 @@ namespace SvettigPlugin
             ActivitySubcatMappings = new Dictionary<string, int>();
             stEquipmentDict = new Dictionary<string, string>();
             EquipmentMappings = new Dictionary<string, int>();
-
-            //// Get a dictionary (ref ID & name) with all ST categories
-            //foreach (IActivityCategory cat in Plugin.GetApplication().Logbook.ActivityCategories)
-            //    FlattenSportTrackActivityTypes(stCategoriesDict, cat);
-            //foreach (KeyValuePair<string, string> entry in stCategoriesDict)
-            //{
-            //    // Create default mapping for each ST category
-            //    ActivityCatMappings.Add(entry.Key, 0);
-            //}
-
-            //ActivityCatMappings = new List<ActivityTypeMapping>();
-            //EquipmentTypeMappings = new List<EquipmentTypeMapping>();
         }
 
         public string UserEmail { get; set; }
@@ -140,80 +128,13 @@ namespace SvettigPlugin
             EquipmentMappings.Add(STId, svettigId);
         }
 
-        //public List<ActivityTypeMapping> ActivityCatMappings { get; set; }
-
-        //public List<EquipmentTypeMapping> EquipmentTypeMappings { get; set; }
-
-        //public static int GetSvettigActivityTypeID(IActivityCategory st)
-        //{
-        //    foreach (ActivityTypeMapping m in Instance.ActivityCatMappings)
-        //        if (m.SportTracks == st.ReferenceId)
-        //            return m.Funbeat;
-
-        //    return 0;
-        //}
-
-        //public static int GetOneFunbeatEquipment(IEquipmentItem eq)
-        //{
-        //    foreach (EquipmentTypeMapping m in Instance.EquipmentTypeMappings)
-        //        if (m.SportTracks == eq.ReferenceId)
-        //            return m.Funbeat;
-
-        //    return 0;
-        //}
-
-        //public static String[] GetFunbeatEquipment(IList<IEquipmentItem> eiList)
-        //{
-        //    List<string> equipment = new List<string>();
-        //    foreach (IEquipmentItem stEq in eiList)
-        //    {
-        //        string fbEq = Settings.GetOneFunbeatEquipment(stEq);
-        //        if (fbEq != null)
-        //        {
-        //            if (fbEq.CompareTo("") != 0)
-        //            {
-        //                equipment.Add(fbEq);
-        //            }
-        //        }
-        //    }
-        //    return equipment.ToArray();
-        //}
-
         internal static void PopulateInstance(System.Xml.XmlElement pluginNode, XmlNamespaceManager nsmgr, XmlDocument xmlDoc)
         {
             instance = new Settings();
-
-            //foreach (XmlNode node in pluginNode.ChildNodes)
-            //{
-            //    if (node.Name == "User")
-            //    {
-            //        instance.UserEmail = node.Attributes[0].Value;
-            //        instance.EncryptedPassword = node.Attributes[1].Value;
-            //    }
-            //}
         }
 
         internal static void WriteInstance(XmlDocument xmlDoc, XmlElement pluginNode)
         {
-            //if (instance == null)
-            //{
-            //    //This can occur if a logbook could not be loaded, then ST is closed
-            //    instance = new Settings();
-            //}
-            //XmlElement user = xmlDoc.CreateElement("User");
-            //XmlAttribute username = xmlDoc.CreateAttribute("UserEmail");
-            //username.Value = instance.UserEmail;
-            //user.Attributes.Append(username);
-            //XmlAttribute password = xmlDoc.CreateAttribute("EncryptedPassword");
-            //password.Value = instance.EncryptedPassword;
-            //user.Attributes.Append(password);
-
-            //XmlNode existing = pluginNode.SelectSingleNode(user.Name);
-            //if (existing == null)
-            //    pluginNode.AppendChild(user);
-            //else
-            //    pluginNode.ReplaceChild(user, existing);
-
         }
 
         private static void FlattenSportTrackActivityTypes(Dictionary<string, string> list, IActivityCategory category)
@@ -278,24 +199,6 @@ namespace SvettigPlugin
                     JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonString);
             }
 
-            
-            //if (logBook.Metadata.Source.Contains("SvettigPluginActCatMappings"))
-            //{
-            //    int startindex = logBook.Metadata.Source.IndexOf("SvettigPluginActCatMappings");
-            //    startindex = logBook.Metadata.Source.IndexOf('{', startindex);
-            //    int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-            //    tempActivityCatMappings =
-            //        JsonConvert.DeserializeObject<Dictionary<string, int>>(logBook.Metadata.Source.Substring(startindex, endindex - startindex));
-            //}
-            //if (logBook.Metadata.Source.Contains("SvettigPluginActSubcatMappings"))
-            //{
-            //    int startindex = logBook.Metadata.Source.IndexOf("SvettigPluginActSubcatMappings");
-            //    startindex = logBook.Metadata.Source.IndexOf('{', startindex);
-            //    int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-            //    tempActivitySubcatMappings =
-            //        JsonConvert.DeserializeObject<Dictionary<string, int>>(logBook.Metadata.Source.Substring(startindex, endindex - startindex));
-            //}
-
             // Get a dictionary (ref ID & name) with all ST categories
             stCategoriesDict.Clear();
             foreach (IActivityCategory cat in logBook.ActivityCategories)
@@ -327,16 +230,6 @@ namespace SvettigPlugin
                     JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonString);
             }
             
-            //Dictionary<string, int> tempEquipmentMappings = new Dictionary<string, int>();
-            //if (logBook.Metadata.Source.Contains("SvettigPluginEquipmentMappings"))
-            //{
-            //    int startindex = logBook.Metadata.Source.IndexOf("SvettigPluginEquipmentMappings");
-            //    startindex = logBook.Metadata.Source.IndexOf('{', startindex);
-            //    int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-            //    tempEquipmentMappings =
-            //        JsonConvert.DeserializeObject<Dictionary<string, int>>(logBook.Metadata.Source.Substring(startindex, endindex - startindex));
-            //}
-
             // Get a dictionary (ref ID & name) with all ST equipment
             stEquipmentDict.Clear();
             foreach (IEquipmentItem eq in logBook.Equipment)
@@ -401,44 +294,8 @@ namespace SvettigPlugin
             string serActivitySubcatMappings = JsonConvert.SerializeObject(ActivitySubcatMappings);
             StoreToLogbookMetadata("SvettigPluginActSubcatMappings", serActivitySubcatMappings);
 
-            //if (logBook.Metadata.Source.Contains("SvettigPluginActCatMappings"))
-            //{
-            //    int startindex = logBook.Metadata.Source.IndexOf("SvettigPluginActCatMappings");
-            //    int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-            //    logBook.Metadata.Source = logBook.Metadata.Source.Replace(logBook.Metadata.Source.Substring(startindex, endindex - startindex + 1),
-            //                                                              "SvettigPluginActCatMappings = " + serActivityCatMappings + "\n");
-            //}
-            //else
-            //{
-            //    logBook.Metadata.Source += "SvettigPluginActCatMappings = " + serActivityCatMappings + "\n";
-            //}
-
-            //if (logBook.Metadata.Source.Contains("SvettigPluginActSubcatMappings"))
-            //{
-            //    int startindex = logBook.Metadata.Source.IndexOf("SvettigPluginActSubcatMappings");
-            //    int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-            //    logBook.Metadata.Source = logBook.Metadata.Source.Replace(logBook.Metadata.Source.Substring(startindex, endindex - startindex + 1),
-            //                                                               "SvettigPluginActSubcatMappings = " + serActivitySubcatMappings + "\n");
-            //}
-            //else
-            //{
-            //    logBook.Metadata.Source += "SvettigPluginActSubcatMappings = " + serActivitySubcatMappings  + "\n";
-            //}
-
             string serEquipmentMappings = JsonConvert.SerializeObject(EquipmentMappings);
             StoreToLogbookMetadata("SvettigPluginEquipmentMappings", serEquipmentMappings);
-
-            //if (logBook.Metadata.Source.Contains("SvettigPluginEquipmentMappings"))
-            //{
-            //    int startindex = logBook.Metadata.Source.IndexOf("SvettigPluginEquipmentMappings");
-            //    int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
-            //    logBook.Metadata.Source = logBook.Metadata.Source.Replace(logBook.Metadata.Source.Substring(startindex, endindex - startindex + 1),
-            //                                                              "SvettigPluginEquipmentMappings = " + serEquipmentMappings + "\n");
-            //}
-            //else
-            //{
-            //    logBook.Metadata.Source += "SvettigPluginEquipmentMappings = " + serEquipmentMappings + "\n";
-            //}
         }
     }
 }
