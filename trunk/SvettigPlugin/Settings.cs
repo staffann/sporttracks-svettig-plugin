@@ -29,11 +29,17 @@ using Newtonsoft.Json;
 
 namespace SvettigPlugin
 {
+    public delegate void ExtSettingsChangeHandler(object sender, EventArgs e);
+    
     [Serializable]
     public class Settings
     {
         public int Version { get; private set; }
         private ILogbook logBook;
+
+        // An event that clients can use to be notified whenever the
+        // settings change due to an external event (changed logbook etc)
+        public event ExtSettingsChangeHandler ExtSettingsChangeEvent;
 
         private static Settings instance;
         public static Settings Instance
@@ -256,6 +262,11 @@ namespace SvettigPlugin
                 ReadLogbookUserInfo();
                 ReadLogbookActivityCatMappings();
                 ReadLogbookEquipmentMappings();
+
+                if (ExtSettingsChangeEvent != null)
+                {
+                    ExtSettingsChangeEvent(this, EventArgs.Empty);
+                }
             }
         }
 
