@@ -34,7 +34,12 @@ namespace SvettigPlugin
         public SettingsControl()
         {
             InitializeComponent();
+            InitSettingsData();
+            Settings.Instance.ExtSettingsChangeEvent += ExtSettingsChangeHandler;
+        }
 
+        private void InitSettingsData()
+        {
             txtUsername.Text = Settings.Instance.UserEmail;
             txtPassword.Text = Settings.Instance.EncryptedPassword;
 
@@ -160,6 +165,12 @@ namespace SvettigPlugin
                 txtPassword.Text = Settings.Instance.EncryptedPassword;
                 Mappings();
             }
+        }
+
+        public void ExtSettingsChangeHandler(object sender, EventArgs e)
+        {
+            // Settings have change due to an external event, like a new logbook being loaded. Update the settings info.
+            InitSettingsData();
         }
 
     }
