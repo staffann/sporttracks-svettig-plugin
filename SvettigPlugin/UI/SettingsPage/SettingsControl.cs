@@ -145,14 +145,21 @@ namespace SvettigPlugin
 
         private void txtUsername_Leave(object sender, EventArgs e)
         {
-            Settings.Instance.UserEmail = txtUsername.Text;
-            Mappings();
+            if (txtUsername.Text != Settings.Instance.UserEmail) // If the email address was changed
+            {
+                Settings.Instance.UserEmail = txtUsername.Text;
+                Mappings();
+            }
         }
 
         private void txtPassword_Leave(object sender, EventArgs e)
         {
-            Settings.Instance.EncryptedPassword = SvettigEncryption.SvettigEncryption.GetEncryptedPassword(Plugin.GetApplication(), txtPassword.Text);
-            Mappings();
+            if (txtPassword.Text != Settings.Instance.EncryptedPassword) // If the password was changed
+            {
+                Settings.Instance.EncryptedPassword = SvettigEncryption.SvettigEncryption.GetEncryptedPassword(Plugin.GetApplication(), txtPassword.Text);
+                txtPassword.Text = Settings.Instance.EncryptedPassword;
+                Mappings();
+            }
         }
 
     }
