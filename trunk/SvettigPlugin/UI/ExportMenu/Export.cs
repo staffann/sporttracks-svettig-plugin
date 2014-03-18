@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+//using System.ServiceModel.Description;
 using ZoneFiveSoftware.Common.Data.Fitness;
 using SvettigEncryption;
 using SvettigPlugin.SvettigService;
@@ -133,6 +134,18 @@ namespace SvettigPlugin
                         
                         WorkoutServiceClient client = new WorkoutServiceClient(binding,
                             new System.ServiceModel.EndpointAddress("http://www.jogg.se/SvettigWorkoutService/SvettigWorkoutService.WorkoutService.svc/soap"));
+                        
+                        // Modify the MaxItemsInObjectGraph behaviour in order to allow serialization of large lists
+                        //foreach (OperationDescription operationDescription in client.Endpoint.Contract.Operations)
+                        //{
+                        //    DataContractSerializerOperationBehavior dcsob =
+                        //        operationDescription.Behaviors.Find<DataContractSerializerOperationBehavior>();
+                        //    if (dcsob != null)
+                        //    {
+                        //        dcsob.MaxItemsInObjectGraph = int.MaxValue;
+                        //    }
+                        //}
+                        
                         Dictionary<string, object> resultDict = client.SyncWorkout(workout);
                         object result;
                         resultDict.TryGetValue("result", out result);
