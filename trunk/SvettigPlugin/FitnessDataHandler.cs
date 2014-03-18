@@ -341,6 +341,8 @@ namespace SvettigPlugin
                 }
                 if (i > lapTpStartIdx)
                     newLap.trackpoints = tpList.GetRange(lapTpStartIdx, i - lapTpStartIdx).ToArray();
+                else
+                    newLap.trackpoints = new Trackpoint[0];
 
                 newLaps.Add(newLap);
             }
@@ -472,10 +474,10 @@ namespace SvettigPlugin
                 tp.latitude = p.Value.LatitudeDegrees;
                 tp.longitude = p.Value.LongitudeDegrees;
                 tp.altitude = p.Value.ElevationMeters;
-                //if (double.IsNaN((double)tp.Altitude))
-                //{
-                //    tp.altitude = null;
-                //}
+                if (float.IsNaN(tp.altitude))
+                {
+                    tp.altitude = 0;
+                }
 
                 //if (prevPoint != null)
                 //    accDistance += p.Value.DistanceMetersToPoint(prevPoint.Value);
