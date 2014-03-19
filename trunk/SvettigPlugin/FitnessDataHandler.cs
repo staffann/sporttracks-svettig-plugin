@@ -395,8 +395,11 @@ namespace SvettigPlugin
             }
             else
             {
-                // Get any track data that exists
-                return GetSvettigTrackPointsFromDataTrack(activity);
+                // Jogg cannot accept data tracks without also having a GPS track, so return an empty list
+                return (new List<Trackpoint>());
+                
+                //// Get any track data that exists
+                //return GetSvettigTrackPointsFromDataTrack(activity);
             }
         }
 
