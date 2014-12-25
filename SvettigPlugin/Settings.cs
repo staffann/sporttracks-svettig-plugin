@@ -205,12 +205,7 @@ namespace SvettigPlugin
                     JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonString);
             }
 
-            // Get a dictionary (ref ID & name) with all ST categories
-            stCategoriesDict.Clear();
-            foreach (IActivityCategory cat in logBook.ActivityCategories)
-                FlattenSportTrackActivityTypes(stCategoriesDict, cat);
-
-            // Recreate mappings based on current logbook categories in case categories have been added or deleted
+            // Recreate mappings based on current logbook categories
             ActivityCatMappings.Clear();
             ActivitySubcatMappings.Clear();
             foreach (KeyValuePair<string, string> entry in stCategoriesDict)
@@ -236,12 +231,7 @@ namespace SvettigPlugin
                     JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonString);
             }
             
-            // Get a dictionary (ref ID & name) with all ST equipment
-            stEquipmentDict.Clear();
-            foreach (IEquipmentItem eq in logBook.Equipment)
-                stEquipmentDict.Add(eq.ReferenceId, eq.Name);
-
-            // Recreate mappings based on current logbook categories in case categories have been added or deleted
+            // Recreate mappings based on current logbook categories
             EquipmentMappings.Clear();
             foreach (KeyValuePair<string, string> entry in stEquipmentDict)
             {
@@ -259,9 +249,26 @@ namespace SvettigPlugin
                 logBook = Plugin.GetApplication().Logbook;
                 logBook.BeforeSave += new EventHandler(LogbookBeforeSaveEventHandler);
 
-                ReadLogbookUserInfo();
-                ReadLogbookActivityCatMappings();
-                ReadLogbookEquipmentMappings();
+                // Create a dictionary (ref ID & name) with all ST categories
+                stCategoriesDict.Clear();
+                foreach (IActivityCategory cat in logBook.ActivityCategories)
+                    FlattenSportTrackActivityTypes(stCategoriesDict, cat);
+
+                // Create a dictionary (ref ID & name) with all ST equipment
+                stEquipmentDict.Clear();
+                foreach (IEquipmentItem eq in logBook.Equipment)
+                    stEquipmentDict.Add(eq.ReferenceId, eq.Name);
+
+                try
+                {
+                    ReadLogbookUserInfo();
+                    ReadLogbookActivityCatMappings();
+                    ReadLogbookEquipmentMappings();
+                }
+                catch
+                {
+                    // Incorrect values caused exception. Continue with default values on remaining settings
+                }
 
                 if (ExtSettingsChangeEvent != null)
                 {
