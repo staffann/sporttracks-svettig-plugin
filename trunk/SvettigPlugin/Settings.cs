@@ -145,9 +145,9 @@ namespace SvettigPlugin
 
         private static void FlattenSportTrackActivityTypes(Dictionary<string, string> list, IActivityCategory category)
         {
+            list.Add(category.ReferenceId, category.Name);
             foreach (IActivityCategory sub in category.SubCategories)
             {
-                list.Add(sub.ReferenceId, sub.Name);
                 FlattenSportTrackActivityTypes(list, sub);
             }
         }
