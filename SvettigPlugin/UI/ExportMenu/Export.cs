@@ -63,6 +63,7 @@ namespace SvettigPlugin
 
                         dataHandler.GetExportData(activity,
                             false,
+                            Settings.Instance.ExportToHiddenComment,
                             out name,
                             out startDate,
                             out hasStartTime,
