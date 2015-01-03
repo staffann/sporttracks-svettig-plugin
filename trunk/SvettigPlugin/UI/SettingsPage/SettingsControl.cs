@@ -167,11 +167,17 @@ namespace SvettigPlugin
             }
         }
 
+        private void checkHiddenComment_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Instance.ExportToHiddenComment = checkHiddenComment.Checked;
+        }
+
         public void ExtSettingsChangeHandler(object sender, EventArgs e)
         {
             // Settings have change due to an external event, like a new logbook being loaded. Update the settings info.
             InitSettingsData();
         }
+
 
     }
 }

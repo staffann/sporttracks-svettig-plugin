@@ -72,6 +72,8 @@ namespace SvettigPlugin
 
         public string EncryptedPassword { get; set; }
 
+        public bool ExportToHiddenComment { get; set; }
+
         // Type mappings ST category id (string) to Svettig category id (int)
         private Dictionary<string, string> stCategoriesDict;
         public Dictionary<string, string> STCategoriesDict
@@ -187,6 +189,18 @@ namespace SvettigPlugin
             }
         }
 
+        private void ReadLogbookExportToHiddenComment()
+        {
+            string jsonString;
+
+            if (ReadFromLogbookMetaData("ExportToHiddenComment", out jsonString))
+            {
+                ExportToHiddenComment =
+                    JsonConvert.DeserializeObject<bool>(jsonString);
+            }
+
+        }
+
         private void ReadLogbookActivityCatMappings()
         {
             string jsonString;
@@ -262,6 +276,7 @@ namespace SvettigPlugin
                 try
                 {
                     ReadLogbookUserInfo();
+                    ReadLogbookExportToHiddenComment();
                     ReadLogbookActivityCatMappings();
                     ReadLogbookEquipmentMappings();
                 }
@@ -305,6 +320,9 @@ namespace SvettigPlugin
 
             string serEncryptedPassword = JsonConvert.SerializeObject(EncryptedPassword);
             StoreToLogbookMetadata("EncryptedPassword", serEncryptedPassword);
+
+            string serExportToHiddenComment = JsonConvert.SerializeObject(ExportToHiddenComment);
+            StoreToLogbookMetadata("ExportToHiddenComment", serExportToHiddenComment);
 
             string serActivityCatMappings = JsonConvert.SerializeObject(ActivityCatMappings);
             StoreToLogbookMetadata("SvettigPluginActCatMappings", serActivityCatMappings);

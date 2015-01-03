@@ -152,6 +152,7 @@ namespace SvettigPlugin
 
         public void GetExportData(IActivity activity,
                                   bool boExportNameInComment,
+                                  bool boExportToHiddenComment,
                                   out string name,
                                   out DateTime startDate,
                                   out bool hasStartTime,
@@ -176,6 +177,7 @@ namespace SvettigPlugin
 
                 int? RPECustFieldData, RepetitionsCustFieldData, SetsCustFieldData;
                 double? TECustFieldData;
+                string tmpComment;
 
                 GetCustomFieldsData(activity,
                                     out RPECustFieldData,
@@ -206,18 +208,27 @@ namespace SvettigPlugin
                 name = activity.Name;
                 if (boExportNameInComment)
                 {
-                    comment = activity.Name + "\r\n" + activity.Notes;
+                    tmpComment = activity.Name + "\r\n" + activity.Notes;
                 }
                 else
                 {
-                    comment = activity.Notes;
+                    tmpComment = activity.Notes;
                 }
                 intensity = RPECustFieldData;
                 if (activity.TotalCalories == 0)
                     kcal = null;
                 else
                     kcal = (int?)Math.Round(activity.TotalCalories);
-                privateComment = "SportsTracks reference: " + activity.ReferenceId;
+                if (boExportToHiddenComment)
+                {
+                    comment = "";
+                    privateComment = tmpComment + "\n" + "SportsTracks reference: " + activity.ReferenceId;
+                }
+                else
+                {
+                    comment = tmpComment;
+                    privateComment = "SportsTracks reference: " + activity.ReferenceId;
+                }
                 repetitions = RepetitionsCustFieldData;
                 sets = SetsCustFieldData;
                 //laps = GetLaps(activity);
