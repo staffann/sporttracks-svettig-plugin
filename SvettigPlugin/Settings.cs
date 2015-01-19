@@ -159,17 +159,17 @@ namespace SvettigPlugin
             if (logBook.Metadata.Source.Contains(tag))
             {
                 int startindex = logBook.Metadata.Source.IndexOf(tag);
-                int tmpstartindex = logBook.Metadata.Source.IndexOfAny(new char[] {'{','"'}, startindex);
+                int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
+                int tmpstartindex = logBook.Metadata.Source.IndexOfAny(new char[] { '{', '"' }, startindex, endindex - startindex);
                 if(tmpstartindex == -1) // JSON string that has no " or { (like a boolean value) or a corrupt string
                 {
-                    tmpstartindex = logBook.Metadata.Source.IndexOf('=', startindex);
+                    tmpstartindex = logBook.Metadata.Source.IndexOf('=', startindex, endindex - startindex);
                     if(tmpstartindex > -1)
                     {
                         tmpstartindex++; // Exclude the equal sign from the string
                     }
                 }
                 startindex = tmpstartindex;
-                int endindex = logBook.Metadata.Source.IndexOf("\n", startindex);
                 jsonData = logBook.Metadata.Source.Substring(startindex, endindex - startindex);
                 return true;
             }

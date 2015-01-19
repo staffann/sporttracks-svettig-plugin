@@ -42,6 +42,7 @@ namespace SvettigPlugin
         {
             txtUsername.Text = Settings.Instance.UserEmail;
             txtPassword.Text = Settings.Instance.EncryptedPassword;
+            checkHiddenComment.Checked = Settings.Instance.ExportToHiddenComment;
 
             Mappings();
         }
